@@ -5,7 +5,7 @@ from typing import NamedTuple, Iterable
 
 
 class File(NamedTuple):
-    name: str or Path
+    name: Path
     lines: int
 
     def __str__(self) -> str:
