@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from pathlib import Path
-from typing import NamedTuple
+from typing import NamedTuple, Iterable
 
 
 class File(NamedTuple):
@@ -38,7 +38,7 @@ def file_size(path: Path) -> int:
             
 
 def project_size(path: Path,
-                 skip: set[str] = None) -> ProjectSize:
+                 skip: Iterable[str] = None) -> ProjectSize:
     skip = skip or {}
     lines, files = 0, []
 
