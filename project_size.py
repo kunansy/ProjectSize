@@ -33,12 +33,11 @@ def file_size(path: Path) -> int:
         return 0
 
     with path.open() as f:
-        size = 0
-        for num, _ in enumerate(f, 1):
-            size = num
+        return sum(
+            1
+            for _ in f
+        )
 
-    return size
-            
 
 def project_size(path: Path,
                  skip: Iterable[str] = None) -> Project:
