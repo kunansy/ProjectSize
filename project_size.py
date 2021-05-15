@@ -23,10 +23,9 @@ class ProjectSize(NamedTuple):
             f"{file}"
             for file in self.files
         )
-        return f"{self.__class__.__name__}(\n" \
-               f"Project: {self.project_name},\n" \
-               f"lines: {self.lines},\n\n" \
-               f"{files})"
+        return f"Project: {self.project_name}\n" \
+               f"lines: {self.lines}\n\n" \
+               f"{files}"
 
 
 def file_size(path: Path) -> int:
