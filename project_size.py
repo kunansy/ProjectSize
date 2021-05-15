@@ -13,7 +13,7 @@ class File(NamedTuple):
                f"Size: {self.lines} lines"
 
 
-class ProjectSize(NamedTuple):
+class Project(NamedTuple):
     project_name: str
     lines: int
     files: list[File]
@@ -41,7 +41,7 @@ def file_size(path: Path) -> int:
             
 
 def project_size(path: Path,
-                 skip: Iterable[str] = None) -> ProjectSize:
+                 skip: Iterable[str] = None) -> Project:
     skip = skip or {}
     lines, files = 0, []
 
@@ -55,7 +55,7 @@ def project_size(path: Path,
         files += [File(lines=file_size_, name=file_name)]
         lines += file_size_
 
-    return ProjectSize(files=files, lines=lines, project_name=path.name)
+    return Project(files=files, lines=lines, project_name=path.name)
 
 
 def main() -> None:
