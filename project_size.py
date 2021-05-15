@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import NamedTuple
 
 
-class FileSize(NamedTuple):
+class File(NamedTuple):
     name: str or Path
     lines: int
 
@@ -15,7 +15,7 @@ class FileSize(NamedTuple):
 class ProjectSize(NamedTuple):
     project_name: str
     lines: int
-    files: list[FileSize]
+    files: list[File]
 
     def __str__(self) -> str:
         files = '\n--------\n'.join(
@@ -49,7 +49,7 @@ def project_size(path: Path,
         file_size_ = file_size(file)
         file_name = file.relative_to(path)
 
-        files += [FileSize(lines=file_size_, name=file_name)]
+        files += [File(lines=file_size_, name=file_name)]
         lines += file_size_
 
     return ProjectSize(files=files, lines=lines, project_name=path.name)
