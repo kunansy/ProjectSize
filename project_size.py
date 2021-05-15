@@ -55,7 +55,7 @@ def project_size(path: Path,
         files += [File(lines=file_size_, name=file_name)]
         lines += file_size_
 
-    return Project(files=files, lines=lines, project_name=path.name)
+    return Project(files=files, lines=lines, project_name=path.absolute().name)
 
 
 def main() -> None:
