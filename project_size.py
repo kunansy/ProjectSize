@@ -9,7 +9,7 @@ class File(NamedTuple):
     lines: int
 
     def __str__(self) -> str:
-        return f"File name: {self.name}\n" \
+        return f"File: {self.name}\n" \
                f"Size: {self.lines} lines"
 
 
