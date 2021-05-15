@@ -29,6 +29,9 @@ class ProjectSize(NamedTuple):
 
 
 def file_size(path: Path) -> int:
+    if not path.exists():
+        return 0
+
     with path.open() as f:
         size = 0
         for num, _ in enumerate(f, 1):
