@@ -33,10 +33,7 @@ def file_size(path: Path) -> int:
         return 0
 
     with path.open() as f:
-        return sum(
-            1
-            for _ in f
-        )
+        return sum(1 for _ in f)
 
 
 def project_size(path: Path,
