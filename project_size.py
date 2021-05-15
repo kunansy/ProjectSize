@@ -73,7 +73,7 @@ def main() -> None:
         '--skip',
         type=str,
         nargs='*',
-        help="These dirs will be skipped",
+        help="These dirs will be skipped, 'venv' skipped by default",
         default=['venv'],
         dest='skip'
     )
