@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 from pathlib import Path
 from typing import NamedTuple, Iterable
 
@@ -55,7 +56,28 @@ def project_size(path: Path,
     return ProjectSize(files=files, lines=lines, project_name=path.name)
 
 
-if __name__ == '__main__':
-    project_path = Path('/home/kirill/ReadingTracker/')
-    print(project_size(project_path, {'venv'}))
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Check updates of the requirements"
+    )
+    parser.add_argument(
+        '--path',
+        type=Path,
+        help="Path to the project",
+        default=Path('.'),
+        dest='path'
+    )
+    parser.add_argument(
+        '--skip',
+        type=str,
+        nargs='*',
+        help="These dirs will be skipped",
+        default=['venv'],
+        dest='skip'
+    )
+    args = parser.parse_args()
+    print(project_size(args.path, args.skip))
 
+
+if __name__ == '__main__':
+    main()
