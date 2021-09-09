@@ -57,7 +57,8 @@ def project_size(path: Path,
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Calculate total amount of lines in .py files"
+        description="Calculate total amount of lines "
+                    "in files with specified extension"
     )
     parser.add_argument(
         '--path',
