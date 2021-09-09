@@ -37,11 +37,12 @@ def file_size(path: Path) -> int:
 
 
 def project_size(path: Path,
+                 extension: str,
                  skip: Iterable[str] = None) -> Project:
-    skip = skip or {}
+    skip = skip or set()
     lines, files = 0, []
 
-    for file in path.rglob('*.py'):
+    for file in path.rglob(extension):
         if any(skip_ in file.parts for skip_ in skip):
             continue
         
@@ -73,8 +74,16 @@ def main() -> None:
         default=['venv'],
         dest='skip'
     )
+    parser.add_argument(
+        '-e', '--extension',
+        type=str,
+        help="Files with which extension calculate. Example: --ext '*.go'",
+        default='*.py',
+        dest='ext'
+    )
+
     args = parser.parse_args()
-    print(project_size(args.path, args.skip))
+    print(project_size(args.path, args.ext, args.skip,))
 
 
 if __name__ == '__main__':
